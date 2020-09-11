@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- displays site properly based on user's device -->
+
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./assets/images/favicon-32x32.png"
+		/>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+		integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+		crossorigin=""/>
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		crossorigin=""></script>
+
+		<title>Frontend Mentor | IP Address Tracker</title>
+
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	<body>
+		<div class="header" style="background-image: url('./assets/images/pattern-bg.png');">
+			<form class="search-bar">
+				<input class="search-input" type="text" placeholder="Search for any IP Adrress or domain"/>
+				<button class="search-button" type="submit">
+					<svg xmlns="http://www.w3.org/2000/svg" width="11" height="14">
+						<path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6" />
+					</svg>
+				</button>
+			</form>
+			</div>
+		</div>
+		<div class="info-container">
+			<div class="info-bar">
+				<div class="info-content">
+					<p>IP ADRRESS</p>
+					<h2 id="ip-holder"></h2>
+				</div>
+				<div class="info-content">
+					<p>LOCATION</p>
+					<h2 id="location-holder"></h2>
+				</div>
+				<div class="info-content">
+					<p>TIMEZONE</p>
+					<h2 id="timezone-holder"></h2>
+				</div>
+				<div class="info-content">
+					<p>ISP</p>
+					<h2 id="isp-holder"></h2>
+				</div>
+			</div>	
+		</div>
+		<div class="map" id="map"></div>
+		<script src="app.js"></script>
+		
+
+	</body>
+</html>
