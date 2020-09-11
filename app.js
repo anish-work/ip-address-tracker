@@ -35,22 +35,35 @@ async function searchIP(e) {
 	e.preventDefault();
 	//DOM Elelments
 	const input = document.querySelector(".search-input");
+	const searchButton = document.querySelector(".search-button");
 
 	const apiKey = "at_uXcyYK1ISwX6fQmzAT7KLQhkEfhMQ";
 
 	let ipAddress = input.value;
-	const data = await fetch(
-		`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ipAddress}`
-	)
-		.then((res) => res.json())
-		.then((data) => data);
+	const regex = /^(http(s?):\/\/)((www\.)+[a-zA-Z0-9\.\-\_])+(\.[a-zA-Z]{2,3})|[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/;
 
-	const nCord = data.location.lat;
-	const eCord = data.location.lng;
+	if (regex.test(ipAddress)) {
+		const data = await fetch(
+			`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ipAddress}`
+		)
+			.then((res) => res.json())
+			.then((data) => data);
 
-	paintMap(nCord, eCord);
+		const nCord = data.location.lat;
+		const eCord = data.location.lng;
 
-	setTimeout(paintDOM(data), 1000);
+		paintMap(nCord, eCord);
+		setTimeout(paintDOM(data), 1000);
+	} else {
+		searchButton.style.backgroundColor = "red";
+		const searchBar = document.querySelector(".search-bar");
+		searchBar.style.animation = "0.1s linear .1s 3 alternate slidein";
+		setTimeout(() => {
+			searchButton.style.backgroundColor = "black";
+			searchBar.style.animation = "none";
+		}, 3000);
+	}
+	input.value = "";
 }
 function paintMap(n, e) {
 	myMap.setView([n, e], 13);
@@ -67,5 +80,3 @@ function paintDOM(data) {
 	timeZoneHolder.textContent = `GMT ${data.location.timezone} `;
 	ispHolder.textContent = `${data.isp.split(" ")[0]} ${data.isp.split(" ")[1]}`;
 }
-
-function animateButton() {}
