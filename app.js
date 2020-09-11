@@ -26,7 +26,7 @@ var myIcon = L.icon({
 	shadowSize: [68, 95],
 	shadowAnchor: [22, 94],
 });
-
+const apiKey = "at_uXcyYK1ISwX6fQmzAT7KLQhkEfhMQ";
 const form = document.querySelector(".search-bar");
 
 form.addEventListener("submit", searchIP);
@@ -36,8 +36,6 @@ async function searchIP(e) {
 	//DOM Elelments
 	const input = document.querySelector(".search-input");
 	const searchButton = document.querySelector(".search-button");
-
-	const apiKey = "at_uXcyYK1ISwX6fQmzAT7KLQhkEfhMQ";
 
 	let ipAddress = input.value;
 	const regex = /^(http(s?):\/\/)((www\.)+[a-zA-Z0-9\.\-\_])+(\.[a-zA-Z]{2,3})|[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/;
@@ -79,4 +77,20 @@ function paintDOM(data) {
 	locationHolder.textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
 	timeZoneHolder.textContent = `GMT ${data.location.timezone} `;
 	ispHolder.textContent = `${data.isp.split(" ")[0]} ${data.isp.split(" ")[1]}`;
+}
+const seeIP = document.querySelector(".see-ip");
+seeIP.addEventListener("click", locateMyIP);
+async function locateMyIP(e) {
+	e.preventDefault();
+	const data = await fetch(
+		`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=`
+	)
+		.then((res) => res.json())
+		.then((data) => data);
+
+	const nCord = data.location.lat;
+	const eCord = data.location.lng;
+
+	paintMap(nCord, eCord);
+	setTimeout(paintDOM(data), 1000);
 }

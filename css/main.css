@@ -18,16 +18,25 @@ body {
 	justify-content: center;
 }
 .title {
-	color: whitesmoke;
 	position: absolute;
-	top: 3vh;
+	top: 0.5em;
 	margin-bottom: 10px;
-	text-shadow: 10px 0px 10px -1px black;
+	text-align: center;
+}
+.title h1 {
+	font-weight: 600;
+	color: whitesmoke;
+}
+.title a {
+	font-weight: 600;
+	color: rgb(219, 197, 0);
+	cursor: pointer;
+	border: 1px solid white;
+	padding: 2px;
 }
 
 .search-bar {
 	display: flex;
-	margin: 0 10em;
 	margin-bottom: 5rem;
 }
 @keyframes slidein {
@@ -64,6 +73,9 @@ body {
 	cursor: pointer;
 }
 @media (max-width: 400px) {
+	.search-bar {
+		margin-bottom: 5rem;
+	}
 	.search-input {
 		width: 16rem;
 	}
