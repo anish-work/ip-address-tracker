@@ -20,24 +20,28 @@ body {
 .title {
 	position: absolute;
 	top: 0.5em;
-	margin-bottom: 10px;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
 }
 .title h1 {
 	font-weight: 600;
 	color: whitesmoke;
 }
 .title a {
+	margin: 0.6em auto;
 	font-weight: 600;
-	color: rgb(219, 197, 0);
+	color: rgb(248, 215, 108);
 	cursor: pointer;
-	border: 1px solid white;
-	padding: 2px;
+	border: 1px solid hsl(0, 0%, 59%);
+	border-radius: 1rem;
+	padding: 3px;
+	width: 7em;
 }
 
 .search-bar {
 	display: flex;
-	margin-bottom: 5rem;
+	margin-bottom: 3rem;
 }
 @keyframes slidein {
 	from {
@@ -52,7 +56,12 @@ body {
 	padding: 1rem;
 	border-radius: 1rem 0 0 1rem;
 	border: none;
-	width: 20rem;
+	width: 25rem;
+}
+.search-input::placeholder {
+	text-align: center;
+	font-family: "Rubik";
+	font-size: 1.2em;
 }
 
 .search-button {
@@ -72,7 +81,7 @@ body {
 .search-button:hover {
 	cursor: pointer;
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
 	.search-bar {
 		margin-bottom: 5rem;
 	}
@@ -87,9 +96,8 @@ body {
 	/* display: flex;
 	justify-content: center; */
 	position: absolute;
-	top: 13rem;
+	top: 14rem;
 	width: 100vw;
-	padding: 1rem;
 	z-index: 2;
 }
 .info-bar {
@@ -114,6 +122,7 @@ body {
 	height: 5rem;
 	transition: text-align 1s linear;
 	text-align: center;
+	color: hsl(0, 0%, 17%);
 }
 @media (min-width: 1080px) {
 	.info-content:nth-child(1),
@@ -127,7 +136,7 @@ body {
 .info-content p {
 	width: 100%;
 	font-size: 0.7rem;
-	color: hsl(0, 0%, 17%);
+	color: hsl(0, 0%, 59%);
 	font-weight: 700;
 	margin-bottom: 0.6rem;
 	transition: all 0.5s ease;
@@ -135,18 +144,18 @@ body {
 }
 @media (max-width: 1080px) {
 	.info-container {
-		top: 8rem;
+		top: 10rem;
 	}
 	.info-bar {
 		flex-direction: column;
-		height: 20rem;
-		width: 70vw;
+		height: 18rem;
+		width: 80vw;
 	}
 	.info-content {
 		margin: 1rem 0 1rem;
 		text-align: center;
 		width: 40vw;
-		height: 9vh;
+		height: 5vh;
 		border-right: none;
 	}
 	.info-content h2 {
@@ -155,16 +164,7 @@ body {
 }
 .map {
 	padding: 3rem;
-	height: 30rem;
+	height: 100vh;
 	z-index: 1;
 	cursor: crosshair;
-}
-
-@keyframes shake {
-	0% {
-		left: 4px;
-	}
-	100% {
-		right: 4px;
-	}
 }
